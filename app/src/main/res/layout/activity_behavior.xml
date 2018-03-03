@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--
+        这里使用AppBarLayout包裹ToolBar ，里边也可以放一些子控件，比如折叠控件
+        app:layout_scrollFlags="scroll|enterAlways"：
+        这个属性必须要有，否则滑动列表头布局和底部FloatingActionButton没反应
+    -->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tool_bar"
+            app:title="知乎首页"
+            app:titleTextColor="#FFFFFF"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <!-- layout_behavior 这个属性必须要有，否则RecyclerView会顶到ToolBar顶部 -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <!-- layout_behavior 这个属性必须要有，否则FloatingActionButton 位置不对-->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_behavior="com.jackchen.view_day18.TranslationBehavior"
+        app:layout_scrollFlags="scroll|enterAlways|snap" />
+
+
+    <!-- layout_behavior 这个属性必须要有，否则底部四个button会跑到顶部的 -->
+    <LinearLayout
+        android:id="@+id/bottom_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/ic_launcher"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
